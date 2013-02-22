@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h2>Round <%= @round.number %> Picks</h2>
+<table width="100%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><strong>Pick Number</strong></td>
+		<td><strong>Team</strong></td>
+		<td><strong>Player</strong></td>
+		
+	</tr>
+<% @picks.each do |pick| %>
+	<tr>
+		<td><%= pick.round.pick %></td>
+		<td><%= link_to pick.team.name, pick.team %></td>
+		<td><%= link_to pick.player.name, pick.player %></td>
+	</tr>
+<% end %>
+</table>
+
+
+<%= link_to 'Edit', edit_round_path(@round) %> |
+<%= link_to 'Back', rounds_path %>

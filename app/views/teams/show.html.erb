@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @team.name %>
+</p>
+
+<p>
+  <b>Division:</b>
+  <%= @team.division %>
+</p>
+
+<p>
+	<h2>Picks</h2>
+</p>
+<table width="100%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><strong>Round</strong></td>
+		<td><strong>Pick</strong></td>
+		<td><strong>Player</strong></td>
+	</tr>
+	<% @team.picks.order('round_id ASC').each do |pick| %>
+		<tr>
+			<td><%= pick.round.number %></td>
+			<td><%= pick.round.pick %></td>
+			<td><%= link_to pick.player.name, pick.player %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

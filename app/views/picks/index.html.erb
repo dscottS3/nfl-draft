@@ -1,0 +1,27 @@
+<h1>Recent Picks</h1>
+<%= link_to 'New Pick', new_pick_path %> (Must be System Admin)<br /><br />
+<table>
+  <tr>
+    <td><strong>Round</strong></td>
+    <td><strong>Team</strong></td>
+    <td><strong>Player</strong></td>
+    <td><strong>Date Picked</strong></td>
+  </tr>
+
+<% @picks.each do |pick| %>
+  <tr>
+    <td><%= link_to pick.round.number, pick.round %></td>
+    <td><%= link_to pick.team.name, pick.team %></td>
+    <td><%= link_to pick.player.name, pick.player %></td>
+	<td><%= pick.created_at.strftime('%b %d, %Y') %></td>
+  </tr>
+<% end %>
+</table>
+<% if @round.present? %>
+	<h2>Next Pick</h2>
+	<%= link_to @round.team.name, @round.team %> - Pick #<%= @round.pick %>
+<% end %>
+
+<br />
+
+

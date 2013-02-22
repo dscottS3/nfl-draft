@@ -1,0 +1,16 @@
+<h1>Listing teams</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Division</th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= link_to team.name, team %></td>
+    <td><%= team.division %></td>
+  </tr>
+<% end %>
+</table>
+
+

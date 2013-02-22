@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NFL Draft Manager</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<style>
+
+</style>
+</head>
+<body>
+<%= link_to "Teams", teams_path %> | 
+<%= link_to "Picks", picks_path %> | 
+<%= link_to "Players", players_path %>
+<%= form_tag players_path, :method => 'get' do %>
+	<%= text_field_tag :s, params[:s], :placeholder => 'Search Players' %>
+	<%= submit_tag 'Search Players', :name => nil %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>
