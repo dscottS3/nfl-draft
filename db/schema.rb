@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(:version => 20130222023405) do
   create_table "picks", :force => true do |t|
     t.integer  "round_id"
     t.integer  "team_id"
+    t.integer  "player_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "player_id"
   end
 
+  add_index "picks", ["player_id"], :name => "index_picks_on_player_id"
   add_index "picks", ["round_id"], :name => "index_picks_on_round_id"
   add_index "picks", ["team_id"], :name => "index_picks_on_team_id"
 
