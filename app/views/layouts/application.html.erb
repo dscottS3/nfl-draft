@@ -37,7 +37,13 @@
 		      <ul class="nav navbar-nav">
 		        <li><%= link_to "Teams", teams_path %></li>
 		        <li><%= link_to "Picks", picks_path %></li>
-				<li><%= link_to "Players", players_path %></li>
+				<li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Players <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><%= link_to 'Not Drafted', players_path(available: true) %></li>
+		            <li><%= link_to 'All Players', players_path %></li>
+		          </ul>
+				</li>
 				<li><%= link_to "Admin", new_pick_path %>
 		      </ul>
 			  	<%= form_tag players_path, method: 'get', class: 'navbar-form navbar-right' do %>

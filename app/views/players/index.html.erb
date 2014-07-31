@@ -1,4 +1,10 @@
-<h1>Listing players</h1>
+<h1>
+	<% if params[:available] %>
+		Listing Non Drafted Players
+	<% else %>
+		Listing All Players
+	<% end %>
+</h1>
 <%= will_paginate @players %>
 
 <table class="table table-striped table-hover">

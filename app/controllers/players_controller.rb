@@ -2,9 +2,18 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = params[:s] ? 
-      Player.where('name LIKE ?', "%#{params[:s]}%").order('name ASC').paginate(page: params[:page], per_page: 25) : 
-      Player.order('name ASC').paginate(page: params[:page], per_page: 25)
+    if params[:s]
+      @players = Player.where('name LIKE ?', "%#{params[:s]}%")
+                      .order('name ASC')
+                      .paginate(page: params[:page], per_page: 25)
+    elsif params[:available]
+      @players = Player.available
+                        .paginate(page: params[:page], per_page: 25)
+    else
+      @players = Player.order('name ASC')
+                        .paginate(page: params[:page], per_page: 25)
+    end
+      
       
 
     respond_to do |format|
