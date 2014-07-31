@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130222023405) do
   create_table "players", :force => true do |t|
     t.string   "name"
     t.string   "position"
+    t.string   "permalink"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "team_id"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130222023405) do
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.string   "division"
+    t.string   "permalink"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

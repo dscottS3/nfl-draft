@@ -1,5 +1,5 @@
 <h1>Listing teams</h1>
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <th>Name</th>
     <th>Division</th>
@@ -7,7 +7,7 @@
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= link_to team.name, team %></td>
+    <td><%= link_to team.name, team_permalink_path(team.permalink) %></td>
     <td><%= team.division %></td>
   </tr>
 <% end %>

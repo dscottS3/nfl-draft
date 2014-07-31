@@ -4,7 +4,7 @@ class PicksController < ApplicationController
   def index
     @picks = Pick.limit(3).order('created_at DESC')
     round = Round.find_by_number(@picks.first.round.number) if @picks.present?
-    @round = round.current_round_pick if @picks.present?
+    @round = @picks.present? ? round.current_round_pick : Round.first
     
 
     respond_to do |format|
@@ -30,13 +30,9 @@ class PicksController < ApplicationController
     pick = Pick.last
     @pick = Pick.new
     @round = pick.present? ? Round.find_by_number(pick.round.number) : Round.new
-    @current_round = @round.current_round_pick
-    @pick.round_id = @current_round.id
+    @pick.round_id = @round.current_round_pick.id
     @pick.team_id = @round.current_round_pick.team_id
     
-    
-    
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @pick }

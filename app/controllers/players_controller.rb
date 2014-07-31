@@ -4,7 +4,8 @@ class PlayersController < ApplicationController
   def index
     @players = params[:s] ? 
       Player.where('name LIKE ?', "%#{params[:s]}%").order('name ASC') : 
-      Player.order('name ASC')
+      Player.order('name ASC').paginate(page: params[:page], per_page: 25)
+      
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @player = Player.find(params[:id])
+    @player = Player.find_by_permalink(params[:permalink])
 
     respond_to do |format|
       format.html # show.html.erb

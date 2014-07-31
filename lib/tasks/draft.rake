@@ -1,6 +1,6 @@
 namespace :draft do
   desc "Assigning player to a team of the current round."
-  task :player => :environment do
+  task player: :environment do
     pick = Pick.last
     @player = Player.available.order('name ASC').first
     @round = pick.present? ? Round.find_by_number(pick.round.number) : Round.new

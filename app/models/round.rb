@@ -4,12 +4,12 @@ class Round < ActiveRecord::Base
   belongs_to :team
   
   def current_round_pick
-    pick = Pick.last
-    if pick.present?
-      pick_number = pick.round.pick.to_i + 1
+    last_pick = Pick.last
+    if last_pick.present?
+      pick_number = last_pick.round.pick.to_i + 1
       Round.find_by_pick(pick_number.to_s)
     else
-      Round.find_by_pick("1")
+      Round.first
     end
   end
 end

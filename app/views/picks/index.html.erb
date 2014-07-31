@@ -1,6 +1,5 @@
 <h1>Recent Picks</h1>
-<%= link_to 'New Pick', new_pick_path %> (Must be System Admin)<br /><br />
-<table>
+<table class='table table-striped'>
   <tr>
     <td><strong>Round</strong></td>
     <td><strong>Team</strong></td>
@@ -11,15 +10,15 @@
 <% @picks.each do |pick| %>
   <tr>
     <td><%= link_to pick.round.number, pick.round %></td>
-    <td><%= link_to pick.team.name, pick.team %></td>
-    <td><%= link_to pick.player.name, pick.player %></td>
+    <td><%= link_to pick.team.name, team_permalink_path(pick.team.permalink) %></td>
+    <td><%= link_to pick.player.name, player_permalink_path(pick.player.permalink) %></td>
 	<td><%= pick.created_at.strftime('%b %d, %Y') %></td>
   </tr>
 <% end %>
 </table>
 <% if @round.present? %>
 	<h2>Next Pick</h2>
-	<%= link_to @round.team.name, @round.team %> - Pick #<%= @round.pick %>
+	<%= link_to @round.team.name, team_permalink_path(@round.team.permalink) %> - Pick #<%= @round.pick %>
 <% end %>
 
 <br />

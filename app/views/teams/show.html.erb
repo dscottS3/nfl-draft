@@ -19,12 +19,14 @@
 		<td><strong>Pick</strong></td>
 		<td><strong>Player</strong></td>
 	</tr>
-	<% @team.picks.order('round_id ASC').each do |pick| %>
-		<tr>
-			<td><%= pick.round.number %></td>
-			<td><%= pick.round.pick %></td>
-			<td><%= link_to pick.player.name, pick.player %></td>
-		</tr>
+	<% if @team.picks.present? %>
+		<% @team.picks.order('round_id ASC').each do |pick| %>
+			<tr>
+				<td><%= pick.round.number %></td>
+				<td><%= pick.round.pick %></td>
+				<td><%= link_to pick.player.name, pick.player %></td>
+			</tr>
+		<% end %>
 	<% end %>
 </table>
 

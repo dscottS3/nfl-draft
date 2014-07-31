@@ -1,6 +1,7 @@
 <h1>Listing players</h1>
+<%= will_paginate @players %>
 
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <th>Name</th>
     <th>Position</th>
@@ -8,8 +9,9 @@
 
 <% @players.each do |player| %>
   <tr>
-    <td><%= link_to player.name, player %></td>
+    <td><%= link_to player.name, player_permalink_path(player.permalink) %></td>
     <td><%= player.position %></td>
   </tr>
 <% end %>
 </table>
+

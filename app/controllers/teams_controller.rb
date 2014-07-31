@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = Team.find(params[:id])
+    @team = Team.find_by_permalink(params[:permalink])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,4 +1,8 @@
-<h1><%= @pick.team.name %> - Round <%= "#{@current_round.number} Pick #{@current_round.pick}" %></h1>
+<h1>
+	<%= @pick.team.name %> - Round 
+	<%= "#{@round.current_round_pick.number} 
+	Pick #{@round.current_round_pick.pick}" %>
+</h1>
 
 <%= render 'form' %>
 

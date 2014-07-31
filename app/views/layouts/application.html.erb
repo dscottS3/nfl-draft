@@ -4,20 +4,52 @@
   <title>NFL Draft Manager</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 <style>
 
 </style>
 </head>
 <body>
-<%= link_to "Teams", teams_path %> | 
-<%= link_to "Picks", picks_path %> | 
-<%= link_to "Players", players_path %>
-<%= form_tag players_path, :method => 'get' do %>
-	<%= text_field_tag :s, params[:s], :placeholder => 'Search Players' %>
-	<%= submit_tag 'Search Players', :name => nil %>
-<% end %>
-<%= yield %>
+	<div class='container'>
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="/">NFL Draft Manager</a>
+		    </div>
 
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li><%= link_to "Teams", teams_path %></li>
+		        <li><%= link_to "Picks", picks_path %></li>
+				<li><%= link_to "Players", players_path %></li>
+				<li><%= link_to "Admin", new_pick_path %>
+		      </ul>
+			  	<%= form_tag players_path, method: 'get', class: 'navbar-form navbar-right' do %>
+					<%= text_field_tag :s, params[:s], placeholder: 'Search Players' %>
+					<%= submit_tag 'Search Players', name: nil, class: 'btn btn-primary' %>
+				<% end %>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+		<%= yield %>
+		
+	</div>
 </body>
 </html>
