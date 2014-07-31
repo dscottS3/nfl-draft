@@ -8,10 +8,14 @@ class PlayersController < ApplicationController
                       .paginate(page: params[:page], per_page: 25)
     elsif params[:available]
       @players = Player.available
-                        .paginate(page: params[:page], per_page: 25)
+                      .paginate(page: params[:page], per_page: 25)
+    elsif params[:position]
+      @players = Player.where(position: params[:position])
+                      .order('name ASC')
+                      .paginate(page: params[:page], per_page: 25)
     else
       @players = Player.order('name ASC')
-                        .paginate(page: params[:page], per_page: 25)
+                      .paginate(page: params[:page], per_page: 25)
     end
       
       

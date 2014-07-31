@@ -5,7 +5,11 @@
 		Listing All Players
 	<% end %>
 </h1>
-<%= will_paginate @players %>
+
+<p><%= will_paginate @players %></p>
+
+<strong>Filter by position:</strong>
+<%= select_tag(:position_filter, options_for_select(positions, params[:position])) %>
 
 <table class="table table-striped table-hover">
   <tr>

@@ -18,4 +18,8 @@ class Player < ActiveRecord::Base
     save
   end
   
+  def self.positions
+    select(:position).group(:position).order('position ASC')
+  end
+  
 end
