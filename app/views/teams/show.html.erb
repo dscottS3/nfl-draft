@@ -24,7 +24,7 @@
 			<tr>
 				<td><%= pick.round.number %></td>
 				<td><%= pick.round.pick %></td>
-				<td><%= link_to pick.player.name, pick.player %></td>
+				<td><%= link_to pick.player.name, player_permalink_path(pick.player.permalink) %></td>
 			</tr>
 		<% end %>
 	<% end %>

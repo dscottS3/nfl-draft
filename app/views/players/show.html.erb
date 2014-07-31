@@ -13,7 +13,7 @@
 <p>
   <strong>Team:</strong>
 	<% if @player.pick.present? %>
-		<%= link_to @player.pick.team.name, @player.pick.team %>
+		<%= link_to @player.pick.team.name, team_permalink_path(@player.pick.team.permalink) %>
 	<% else %>
 		N/A
 	<% end %>
