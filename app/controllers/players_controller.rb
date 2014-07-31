@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     @players = params[:s] ? 
-      Player.where('name LIKE ?', "%#{params[:s]}%").order('name ASC') : 
+      Player.where('name LIKE ?', "%#{params[:s]}%").order('name ASC').paginate(page: params[:page], per_page: 25) : 
       Player.order('name ASC').paginate(page: params[:page], per_page: 25)
       
 
